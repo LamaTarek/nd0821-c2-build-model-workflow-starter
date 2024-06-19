@@ -44,6 +44,8 @@ def go(args):
 
     # Save cleaned data to a CSV file
     cleaned_data_path = "clean_sample.csv"
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
     df.to_csv(cleaned_data_path, index=False)
     logger.info(f"Cleaned data saved to {cleaned_data_path}")
 
